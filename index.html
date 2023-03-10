@@ -31,7 +31,7 @@
   }
 
   // Function which plays a single round
-  function play(playerSelection, computerSelection) {
+  function playRound(playerSelection, computerSelection) {
 
     if (
       (computerSelection === "rock" && playerSelection === "scissors") ||
@@ -49,7 +49,7 @@
   }
 
   computerSelection = getComputerChoice();
-  result = play(playerSelection, computerSelection);
+  result = playRound(playerSelection, computerSelection);
   console.log("Computer :", computerSelection);
   console.log("Player :", playerSelection);
   console.log(result);
