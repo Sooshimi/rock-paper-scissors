@@ -12,33 +12,47 @@
 
 <script>
   let choice = "";
-  let computerChoice = "";
-  let playerSelection = "";
+  let computerSelection = "";
+  let playerSelection = "rock";
 
   // Function which randomly returns "rock", "paper", or "scissors"
   function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
 
     if (random === 0) {
-      choice = "rock";
+      computerSelection = "rock";
     } else if (random === 1) {
-      choice = "paper";
+      computerSelection = "paper";
     } else {
-      choice = "scissors";
+      computerSelection = "scissors";
     }
 
-    return choice;
+    return computerSelection;
   }
 
   // Function which plays a single round
   function play(playerSelection, computerSelection) {
-    computerChoice = getComputerChoice();
-    playerSelection = getComputerChoice();
 
-    return result
+    if (
+      (computerSelection === "rock" && playerSelection === "scissors") ||
+      (computerSelection === "paper" && playerSelection === "rock") ||
+      (computerSelection === "scissors" && playerSelection === "paper")) {
+      return "You lose!"
+    } else if (
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "scissors" && computerSelection === "paper")) {
+      return "You win!"
+    } else {
+      return "It's a tie!"
+    }
   }
 
-  console.log(play("rock","scissors"))
+  computerSelection = getComputerChoice();
+  result = play(playerSelection, computerSelection);
+  console.log("Computer :", computerSelection);
+  console.log("Player :", playerSelection);
+  console.log(result);
 
 </script>
 
