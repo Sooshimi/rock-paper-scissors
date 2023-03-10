@@ -11,28 +11,24 @@
 <body></body>
 
 <script>
-  let choice = "";
-  let computerSelection = "";
-  let playerSelection = "rock";
-
   // Function which randomly returns "rock", "paper", or "scissors"
   function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
+    let computerChoice = "";
 
     if (random === 0) {
-      computerSelection = "rock";
+      computerChoice = "rock";
     } else if (random === 1) {
-      computerSelection = "paper";
+      computerChoice = "paper";
     } else {
-      computerSelection = "scissors";
+      computerChoice = "scissors";
     }
 
-    return computerSelection;
+    return computerChoice;
   }
 
   // Function which plays a single round
   function playRound(playerSelection, computerSelection) {
-
     if (
       (computerSelection === "rock" && playerSelection === "scissors") ||
       (computerSelection === "paper" && playerSelection === "rock") ||
@@ -48,11 +44,20 @@
     }
   }
 
-  computerSelection = getComputerChoice();
-  result = playRound(playerSelection, computerSelection);
-  console.log("Computer :", computerSelection);
-  console.log("Player :", playerSelection);
-  console.log(result);
+  // Function to loop the game for 5 rounds
+  function game() {
+    for (let i = 0; i < 5; i++) {
+      let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
+      console.log("Round ", i + 1)
+      let computerSelection = getComputerChoice();
+      result = playRound(playerSelection, computerSelection);
+      console.log("Computer:", computerSelection);
+      console.log("Player :", playerSelection);
+      console.log(result);
+    }
+  }
+
+  game();
 
 </script>
 
