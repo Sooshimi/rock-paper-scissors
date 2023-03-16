@@ -59,7 +59,7 @@
     //   console.log("Player :", playerSelection);
     //   console.log(result);
 
-    let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
+    let playerSelection = "rock";
     let computerSelection = getComputerChoice();
     result = playRound(playerSelection, computerSelection);
     console.log("Computer:", computerSelection);
@@ -67,7 +67,13 @@
     console.log(result);
   }
 
-  game();
+  function buttonClick(e) {
+    const button = document.querySelector("button.rock");
+    button.classList.add("clicked");
+  }
+  
+  window.addEventListener("click", buttonClick);
+  //game();
 
 </script>
 
