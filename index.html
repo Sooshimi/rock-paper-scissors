@@ -46,15 +46,21 @@
 
   // Function to loop the game for 5 rounds
   function game() {
-    for (let i = 0; i < 5; i++) {
-      let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
-      console.log("Round ", i + 1)
-      let computerSelection = getComputerChoice();
-      result = playRound(playerSelection, computerSelection);
-      console.log("Computer:", computerSelection);
-      console.log("Player :", playerSelection);
-      console.log(result);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //   let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
+    //   console.log("Round ", i + 1)
+    //   let computerSelection = getComputerChoice();
+    //   result = playRound(playerSelection, computerSelection);
+    //   console.log("Computer:", computerSelection);
+    //   console.log("Player :", playerSelection);
+    //   console.log(result);
+
+    let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
+    let computerSelection = getComputerChoice();
+    result = playRound(playerSelection, computerSelection);
+    console.log("Computer:", computerSelection);
+    console.log("Player :", playerSelection);
+    console.log(result);
   }
 
   game();
