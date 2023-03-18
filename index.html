@@ -18,7 +18,8 @@
   // Function which randomly returns "rock", "paper", or "scissors"
   function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
-    let computerChoice = "";
+    let computerChoice;
+    let playerSelection;
 
     if (random === 0) {
       computerChoice = "rock";
@@ -49,31 +50,40 @@
   }
 
   // Function to loop the game for 5 rounds
-  function game() {
-    // for (let i = 0; i < 5; i++) {
-    //   let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
-    //   console.log("Round ", i + 1)
-    //   let computerSelection = getComputerChoice();
-    //   result = playRound(playerSelection, computerSelection);
-    //   console.log("Computer:", computerSelection);
-    //   console.log("Player :", playerSelection);
-    //   console.log(result);
+  // function game() {
+  //   for (let i = 0; i < 5; i++) {
+  //     let playerSelection = window.prompt("rock/paper/scissors?").toLowerCase();
+  //     console.log("Round ", i + 1)
+  //     let computerSelection = getComputerChoice();
+  //     result = playRound(playerSelection, computerSelection);
+  //     console.log("Computer:", computerSelection);
+  //     console.log("Player :", playerSelection);
+  //     console.log(result);
 
-    let playerSelection = "rock";
-    let computerSelection = getComputerChoice();
-    result = playRound(playerSelection, computerSelection);
-    console.log("Computer:", computerSelection);
-    console.log("Player :", playerSelection);
-    console.log(result);
-  }
+  //   let playerSelection = "rock";
+  //   let computerSelection = getComputerChoice();
+  //   result = playRound(playerSelection, computerSelection);
+  //   console.log("Computer:", computerSelection);
+  //   console.log("Player :", playerSelection);
+  //   console.log(result);
+  // }
 
-  function buttonClick(e) {
-    const button = document.querySelector("button.rock");
-    button.classList.add("clicked");
-  }
-  
-  window.addEventListener("click", buttonClick);
-  //game();
+  const buttons = document.querySelectorAll("button");
+
+  buttons.forEach((button) => button.addEventListener('click',() => {
+      if (button.className === "rock") {
+        playerSelection = "rock";
+      }
+      else if (button.className === "paper") {
+        playerSelection = "paper";
+      }
+      else if (button.className === "scissors") {
+        playerSelection = "scissors"
+      }
+    
+      let computerSelection = getComputerChoice();
+      console.log(playRound(playerSelection, computerSelection));
+    }));
 
 </script>
 
