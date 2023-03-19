@@ -12,6 +12,8 @@
   <button class="rock"></button>
   <button class="paper"></button>
   <button class="scissors"></button>
+
+  <div></div>
 </body>
 
 <script>
@@ -38,15 +40,26 @@
       (computerSelection === "rock" && playerSelection === "scissors") ||
       (computerSelection === "paper" && playerSelection === "rock") ||
       (computerSelection === "scissors" && playerSelection === "paper")) {
-      return "You lose!"
+      const text = document.createTextNode("You lose!")
+      checkAndAppendChild(text, myDiv);
     } else if (
       (playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection === "paper" && computerSelection === "rock") ||
       (playerSelection === "scissors" && computerSelection === "paper")) {
-      return "You win!"
+      const text = document.createTextNode("You win!")
+      checkAndAppendChild(text, myDiv);
     } else {
-      return "It's a tie!"
+      const text = document.createTextNode("It's a tie!")
+      checkAndAppendChild(text, myDiv);
     }
+  }
+
+  function checkAndAppendChild(text, node) {
+    if (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+        node.appendChild(text);
+      }
+    else node.appendChild(text);
   }
 
   // Function to loop the game for 5 rounds
@@ -69,6 +82,7 @@
   // }
 
   const buttons = document.querySelectorAll("button");
+  const myDiv = document.querySelector("div");
 
   buttons.forEach((button) => button.addEventListener('click',() => {
       if (button.className === "rock") {
@@ -82,7 +96,7 @@
       }
     
       let computerSelection = getComputerChoice();
-      console.log(playRound(playerSelection, computerSelection));
+      playRound(playerSelection, computerSelection);
     }));
 
 </script>
