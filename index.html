@@ -13,13 +13,14 @@
   <button class="paper">Paper</button>
   <button class="scissors">Scissors</button>
 
-  <div class="result"></div>
+  <div class="roundResult"></div>
   <div>
     <h2>Player score:</h2>
     <div class="playerScore">0</div>
     <h2>Computer score:</h2>
     <div class="computerScore">0</div>
   </div>
+  <div class="finalResult"></div>
 
 </body>
 
@@ -95,7 +96,7 @@
   let playerScore = 0;
   let computerScore = 0;
   const buttons = document.querySelectorAll("button");
-  const resultDiv = document.querySelector("div.result");
+  const roundResultDiv = document.querySelector("div.roundResult");
   const playerScoreDiv = document.querySelector("div.playerScore");
   const computerScoreDiv = document.querySelector("div.computerScore");
 
