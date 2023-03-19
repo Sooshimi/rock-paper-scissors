@@ -45,26 +45,38 @@
       (computerSelection === "rock" && playerSelection === "scissors") ||
       (computerSelection === "paper" && playerSelection === "rock") ||
       (computerSelection === "scissors" && playerSelection === "paper")) {
-        computerScore += 1;
-        const text = document.createTextNode("You lose!");
-        const score = document.createTextNode(computerScore);
-        checkAndAppendChild(text, resultDiv);
-        checkAndAppendChild(score, computerScoreDiv);
+        updateScore("computerWin");
     } else if (
       (playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection === "paper" && computerSelection === "rock") ||
       (playerSelection === "scissors" && computerSelection === "paper")) {
-        playerScore += 1;
-        const score = document.createTextNode(playerScore);
-        const text = document.createTextNode("You win!")
-        checkAndAppendChild(text, resultDiv);
-        checkAndAppendChild(score, playerScoreDiv);
+        updateScore("playerWin");
     } else {
-      const text = document.createTextNode("It's a tie!")
-      checkAndAppendChild(text, resultDiv);
+      updateScore();
     }
     console.log("Player score: ", playerScore);
     console.log("Computer score: ", computerScore);
+  }
+
+  function updateScore(winner = "") {
+    if (winner === "computerWin") {
+      computerScore += 1;
+      const text = document.createTextNode("You lost the round!");
+      const score = document.createTextNode(computerScore);
+      checkAndAppendChild(text, resultDiv);
+      checkAndAppendChild(score, computerScoreDiv);
+    }
+    else if (winner === "playerWin") {
+      playerScore += 1;
+      const text = document.createTextNode("You won the round!");
+      const score = document.createTextNode(playerScore);
+      checkAndAppendChild(text, resultDiv);
+      checkAndAppendChild(score, playerScoreDiv);
+    }
+    else {
+      const text = document.createTextNode("It's a tie round!")
+      checkAndAppendChild(text, resultDiv);
+    }
   }
 
   function checkAndAppendChild(text, node) {
