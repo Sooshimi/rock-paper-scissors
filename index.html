@@ -13,15 +13,20 @@
   <button class="paper">Paper</button>
   <button class="scissors">Scissors</button>
 
-  <div></div>
+  <div class="result"></div>
+  <div>
+    <h2>Player score:</h2>
+    <div class="playerScore">0</div>
+    <h2>Computer score:</h2>
+    <div class="computerScore">0</div>
+  </div>
+
 </body>
 
 <script>
   // Function which randomly returns "rock", "paper", or "scissors"
   function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
-    let computerChoice;
-    let playerSelection;
 
     if (random === 0) {
       computerChoice = "rock";
@@ -40,25 +45,33 @@
       (computerSelection === "rock" && playerSelection === "scissors") ||
       (computerSelection === "paper" && playerSelection === "rock") ||
       (computerSelection === "scissors" && playerSelection === "paper")) {
-      const text = document.createTextNode("You lose!")
-      checkAndAppendChild(text, myDiv);
+        computerScore += 1;
+        const text = document.createTextNode("You lose!");
+        const score = document.createTextNode(computerScore);
+        checkAndAppendChild(text, resultDiv);
+        checkAndAppendChild(score, computerScoreDiv);
     } else if (
       (playerSelection === "rock" && computerSelection === "scissors") ||
       (playerSelection === "paper" && computerSelection === "rock") ||
       (playerSelection === "scissors" && computerSelection === "paper")) {
-      const text = document.createTextNode("You win!")
-      checkAndAppendChild(text, myDiv);
+        playerScore += 1;
+        const score = document.createTextNode(playerScore);
+        const text = document.createTextNode("You win!")
+        checkAndAppendChild(text, resultDiv);
+        checkAndAppendChild(score, playerScoreDiv);
     } else {
       const text = document.createTextNode("It's a tie!")
-      checkAndAppendChild(text, myDiv);
+      checkAndAppendChild(text, resultDiv);
     }
+    console.log("Player score: ", playerScore);
+    console.log("Computer score: ", computerScore);
   }
 
   function checkAndAppendChild(text, node) {
     if (node.hasChildNodes()) {
-        node.removeChild(node.firstChild);
-        node.appendChild(text);
-      }
+      node.removeChild(node.firstChild);
+      node.appendChild(text);
+    }
     else node.appendChild(text);
   }
 
@@ -81,23 +94,29 @@
   //   console.log(result);
   // }
 
+  let computerChoice;
+  let playerSelection;
+  let playerScore = 0;
+  let computerScore = 0;
   const buttons = document.querySelectorAll("button");
-  const myDiv = document.querySelector("div");
+  const resultDiv = document.querySelector("div.result");
+  const playerScoreDiv = document.querySelector("div.playerScore");
+  const computerScoreDiv = document.querySelector("div.computerScore");
 
-  buttons.forEach((button) => button.addEventListener('click',() => {
-      if (button.className === "rock") {
-        playerSelection = "rock";
-      }
-      else if (button.className === "paper") {
-        playerSelection = "paper";
-      }
-      else if (button.className === "scissors") {
-        playerSelection = "scissors"
-      }
-    
-      let computerSelection = getComputerChoice();
-      playRound(playerSelection, computerSelection);
-    }));
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    if (button.className === "rock") {
+      playerSelection = "rock";
+    }
+    else if (button.className === "paper") {
+      playerSelection = "paper";
+    }
+    else if (button.className === "scissors") {
+      playerSelection = "scissors"
+    }
+
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+  }));
 
 </script>
 
