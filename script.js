@@ -59,7 +59,16 @@ function updateScore(winner = "") {
             checkAndAppendChild(text, roundResultDiv);
         }
     }
-    else return;
+    else {
+        const newDiv = document.createElement("div");
+        const playAgainButton = document.createElement("button");
+        playAgainButton.classList.add("playAgain");
+        document.body.after(newDiv,finalResultDiv);
+        newDiv.appendChild(playAgainButton);
+        // finalResultDiv.appendChild(playAgainButton);
+        // return;
+    }
+    
 }
 
 function checkAndAppendChild(text, node) {
