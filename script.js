@@ -38,6 +38,10 @@ function updateScore(winner = "") {
             const score = document.createTextNode(computerScore);
             checkAndAppendChild(text, roundResultDiv);
             checkAndAppendChild(score, computerScoreDiv);
+            if (computerScore === 5) {
+                const text = document.createTextNode("You lost!");
+                finalResultDiv.appendChild(text);
+            }
         }
         else if (winner === "playerWin") {
             playerScore += 1;
@@ -45,6 +49,10 @@ function updateScore(winner = "") {
             const score = document.createTextNode(playerScore);
             checkAndAppendChild(text, roundResultDiv);
             checkAndAppendChild(score, playerScoreDiv);
+            if (playerScore === 5) {
+                const text = document.createTextNode("You won!");
+                finalResultDiv.appendChild(text);
+            }
         }
         else {
             const text = document.createTextNode("It's a tie round!")
@@ -68,6 +76,7 @@ let playerScore = 0;
 let computerScore = 0;
 const buttons = document.querySelectorAll("button");
 const roundResultDiv = document.querySelector("div.roundResult");
+const finalResultDiv = document.querySelector("div.finalResult");
 const playerScoreDiv = document.querySelector("div.playerScore");
 const computerScoreDiv = document.querySelector("div.computerScore");
 
