@@ -26,8 +26,6 @@ function playRound(playerSelection, computerSelection) {
     } else {
         updateScore();
     }
-    console.log("Player score: ", playerScore);
-    console.log("Computer score: ", computerScore);
 }
 
 function showSelection() {
