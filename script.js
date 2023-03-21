@@ -1,4 +1,4 @@
-function getComputerChoice() {
+function getComputerSelection() {
     let random = Math.floor(Math.random() * 3);
 
     if (random === 0) {
@@ -134,6 +134,6 @@ buttons.forEach((button) =>
             playerSelection = "scissors"
         }
 
-        let computerSelection = getComputerChoice();
+        let computerSelection = getComputerSelection();
         playRound(playerSelection, computerSelection);
     }));
