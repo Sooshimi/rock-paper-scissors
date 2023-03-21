@@ -1,5 +1,7 @@
 # Project: Rock Paper Scissors
 
+URL: <https://sooshimi.github.io/rock-paper-scissors/>
+
 ---
 
 ## Objectives
