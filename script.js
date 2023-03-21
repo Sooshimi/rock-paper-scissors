@@ -17,14 +17,14 @@ function playRound(playerSelection, computerSelection) {
         (computerSelection === "rock" && playerSelection === "scissors") ||
         (computerSelection === "paper" && playerSelection === "rock") ||
         (computerSelection === "scissors" && playerSelection === "paper")) {
-        updateScore("computerWin");
+        updateScoreAndDisplay("computerWin");
     } else if (
         (playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")) {
-        updateScore("playerWin");
+        updateScoreAndDisplay("playerWin");
     } else {
-        updateScore();
+        updateScoreAndDisplay();
     }
 }
 
@@ -35,7 +35,7 @@ function showSelection() {
     checkAndAppendChild(computerText, computerSelectionDiv);
 }
 
-function updateScore(winner = "") {
+function updateScoreAndDisplay(winner = "") {
     if (playerScore < 5 && computerScore < 5) {
         if (winner === "computerWin") {
             computerScore += 1;
