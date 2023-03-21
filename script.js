@@ -66,6 +66,7 @@ function updateScore(winner = "") {
         else {
             const text = document.createTextNode("It's a tie round!")
             checkAndAppendChild(text, roundResultDiv);
+            showSelection();
         }
     }
     else return;
