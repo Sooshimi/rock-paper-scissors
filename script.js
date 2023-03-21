@@ -2,14 +2,14 @@ function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
 
     if (random === 0) {
-        computerChoice = "rock";
+        computerSelection = "rock";
     } else if (random === 1) {
-        computerChoice = "paper";
+        computerSelection = "paper";
     } else {
-        computerChoice = "scissors";
+        computerSelection = "scissors";
     }
 
-    return computerChoice;
+    return computerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -30,6 +30,13 @@ function playRound(playerSelection, computerSelection) {
     console.log("Computer score: ", computerScore);
 }
 
+function showSelection() {
+    const playerText = document.createTextNode(playerSelection);
+    checkAndAppendChild(playerText, playerSelectionDiv);
+    const computerText = document.createTextNode(computerSelection);
+    checkAndAppendChild(computerText, computerSelectionDiv);
+}
+
 function updateScore(winner = "") {
     if (playerScore < 5 && computerScore < 5) {
         if (winner === "computerWin") {
@@ -38,6 +45,7 @@ function updateScore(winner = "") {
             const score = document.createTextNode(computerScore);
             checkAndAppendChild(text, roundResultDiv);
             checkAndAppendChild(score, computerScoreDiv);
+            showSelection();
             if (computerScore === 5) {
                 const text = document.createTextNode("You lost!");
                 finalResultDiv.appendChild(text);
@@ -50,6 +58,7 @@ function updateScore(winner = "") {
             const score = document.createTextNode(playerScore);
             checkAndAppendChild(text, roundResultDiv);
             checkAndAppendChild(score, playerScoreDiv);
+            showSelection();
             if (playerScore === 5) {
                 const text = document.createTextNode("You won!");
                 finalResultDiv.appendChild(text);
@@ -85,6 +94,9 @@ function createPlayAgain() {
         roundResultDiv.removeChild(roundResultDiv.firstChild);
         // remove text in finalResultDiv
         finalResultDiv.removeChild(finalResultDiv.firstChild);
+        // remove playerSelection and computerSelection texts
+        playerSelectionDiv.removeChild(playerSelectionDiv.firstChild);
+        computerSelectionDiv.removeChild(computerSelectionDiv.firstChild);
         // remove playAgain button
         newDiv.removeChild(playAgainButton);
     });
@@ -98,11 +110,13 @@ function checkAndAppendChild(text, node) {
     else node.appendChild(text);
 }
 
-let computerChoice;
+let computerSelection;
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 const buttons = document.querySelectorAll("button");
+const playerSelectionDiv = document.querySelector("div.playerSelection");
+const computerSelectionDiv = document.querySelector("div.computerSelection");
 const roundResultDiv = document.querySelector("div.roundResult");
 const finalResultDiv = document.querySelector("div.finalResult");
 const playerScoreDiv = document.querySelector("div.playerScore");
