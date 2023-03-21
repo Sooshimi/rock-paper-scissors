@@ -41,6 +41,7 @@ function updateScore(winner = "") {
             if (computerScore === 5) {
                 const text = document.createTextNode("You lost!");
                 finalResultDiv.appendChild(text);
+                createPlayAgain();
             }
         }
         else if (winner === "playerWin") {
@@ -52,6 +53,7 @@ function updateScore(winner = "") {
             if (playerScore === 5) {
                 const text = document.createTextNode("You won!");
                 finalResultDiv.appendChild(text);
+                createPlayAgain();
             }
         }
         else {
@@ -59,16 +61,15 @@ function updateScore(winner = "") {
             checkAndAppendChild(text, roundResultDiv);
         }
     }
-    else {
-        const newDiv = document.createElement("div");
-        const playAgainButton = document.createElement("button");
-        playAgainButton.classList.add("playAgain");
-        document.body.after(newDiv,finalResultDiv);
-        newDiv.appendChild(playAgainButton);
-        // finalResultDiv.appendChild(playAgainButton);
-        // return;
-    }
-    
+    else return;
+}
+
+function createPlayAgain() {
+    const newDiv = document.createElement("div");
+    const playAgainButton = document.createElement("button");
+    playAgainButton.classList.add("playAgain");
+    document.body.after(playAgainButton, newDiv);
+    newDiv.appendChild(playAgainButton);
 }
 
 function checkAndAppendChild(text, node) {
