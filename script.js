@@ -68,8 +68,26 @@ function createPlayAgain() {
     const newDiv = document.createElement("div");
     const playAgainButton = document.createElement("button");
     playAgainButton.classList.add("playAgain");
+    const text = document.createTextNode("Play again");
+    playAgainButton.appendChild(text);
     document.body.after(playAgainButton, newDiv);
     newDiv.appendChild(playAgainButton);
+
+    playAgainButton.addEventListener("click", () => {
+        //reset scores
+        playerScore = 0;
+        computerScore = 0;
+        const resetComputerScoreText = document.createTextNode(computerScore);
+        const resetPlayerScoreText = document.createTextNode(playerScore);
+        checkAndAppendChild(resetComputerScoreText, computerScoreDiv);
+        checkAndAppendChild(resetPlayerScoreText, playerScoreDiv);
+        // remove text in roundResultDiv
+        roundResultDiv.removeChild(roundResultDiv.firstChild);
+        // remove text in finalResultDiv
+        finalResultDiv.removeChild(finalResultDiv.firstChild);
+        // remove playAgain button
+        newDiv.removeChild(playAgainButton);
+    });
 }
 
 function checkAndAppendChild(text, node) {
