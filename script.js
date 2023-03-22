@@ -78,7 +78,7 @@ function createPlayAgain() {
     playAgainButton.classList.add("playAgain");
     const text = document.createTextNode("Play again");
     playAgainButton.appendChild(text);
-    document.body.after(playAgainButton, newDiv);
+    finalResultDiv.after(playAgainButton, newDiv);
     newDiv.appendChild(playAgainButton);
 
     playAgainButton.addEventListener("click", () => {
