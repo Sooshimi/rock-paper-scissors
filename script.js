@@ -30,9 +30,9 @@ function playRound(playerSelection, computerSelection) {
 
 function showSelection() {
     const playerText = document.createTextNode(playerSelection);
-    checkAndAppendChild(playerText, playerSelectionDiv);
+    //checkAndAppendChild(playerText, playerSelectionDiv);
     const computerText = document.createTextNode(computerSelection);
-    checkAndAppendChild(computerText, computerSelectionDiv);
+    //checkAndAppendChild(computerText, computerSelectionDiv);
 }
 
 function updateScoreAndDisplay(winner = "") {
@@ -120,17 +120,21 @@ const roundResultDiv = document.querySelector("div.roundResult");
 const finalResultDiv = document.querySelector("div.finalResult");
 const playerScoreDiv = document.querySelector("div.playerScore");
 const computerScoreDiv = document.querySelector("div.computerScore");
+const image = document.querySelector("img");
 
 buttons.forEach((input) =>
 input.addEventListener("click", function buttonClick() {
         if (input.className === "rock") {
             playerSelection = "rock";
+            image.src = "images/player_rock.png";
         }
         else if (input.className === "paper") {
             playerSelection = "paper";
+            image.src = "images/player_paper.png";
         }
         else if (input.className === "scissors") {
             playerSelection = "scissors"
+            image.src = "images/player_scissors.png";
         }
 
         let computerSelection = getComputerSelection();
