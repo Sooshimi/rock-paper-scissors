@@ -23,3 +23,14 @@ body {
     padding-top: 24px;
     padding-bottom: 24px;
 }
+
+.selection-container {
+    display: flex;
+}
+
+.playerSelection,
+.computerSelection {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+}
