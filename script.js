@@ -113,7 +113,7 @@ let computerSelection;
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("input");
 const playerSelectionDiv = document.querySelector("div.playerSelection");
 const computerSelectionDiv = document.querySelector("div.computerSelection");
 const roundResultDiv = document.querySelector("div.roundResult");
@@ -121,15 +121,15 @@ const finalResultDiv = document.querySelector("div.finalResult");
 const playerScoreDiv = document.querySelector("div.playerScore");
 const computerScoreDiv = document.querySelector("div.computerScore");
 
-buttons.forEach((button) =>
-    button.addEventListener("click", function buttonClick() {
-        if (button.className === "rock") {
+buttons.forEach((input) =>
+input.addEventListener("click", function buttonClick() {
+        if (input.className === "rock") {
             playerSelection = "rock";
         }
-        else if (button.className === "paper") {
+        else if (input.className === "paper") {
             playerSelection = "paper";
         }
-        else if (button.className === "scissors") {
+        else if (input.className === "scissors") {
             playerSelection = "scissors"
         }
 

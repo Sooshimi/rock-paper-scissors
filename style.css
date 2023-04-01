@@ -10,3 +10,16 @@ body {
     margin-top: 50px;
     gap: 20px;
 }
+
+.rock,
+.scissors {
+    aspect-ratio: 1/1;
+    width: 50px;
+}
+
+.paper {
+    align-self: center;
+    width: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
