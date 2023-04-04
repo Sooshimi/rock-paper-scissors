@@ -3,10 +3,13 @@ function getComputerSelection() {
 
     if (random === 0) {
         computerSelection = "rock";
+        computer_image.src = "images/cpu_rock.png";
     } else if (random === 1) {
         computerSelection = "paper";
+        computer_image.src = "images/cpu_paper.png";
     } else {
         computerSelection = "scissors";
+        computer_image.src = "images/cpu_scissors.png";
     }
 
     return computerSelection;
@@ -121,6 +124,7 @@ const finalResultDiv = document.querySelector("div.finalResult");
 const playerScoreDiv = document.querySelector("div.playerScore");
 const computerScoreDiv = document.querySelector("div.computerScore");
 const player_image = document.querySelector(".player-image");
+const computer_image = document.querySelector(".computer-image");
 
 buttons.forEach((input) =>
 input.addEventListener("click", function buttonClick() {
