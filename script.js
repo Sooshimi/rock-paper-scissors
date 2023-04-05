@@ -3,15 +3,12 @@ function getComputerSelection() {
 
     if (random === 0) {
         computerSelection = "rock";
-        computer_image.src = "images/cpu_rock.png";
     } else if (random === 1) {
         computerSelection = "paper";
-        computer_image.src = "images/cpu_paper.png";
     } else {
         computerSelection = "scissors";
-        computer_image.src = "images/cpu_scissors.png";
     }
-
+    displayComputerSelection(computerSelection);
     return computerSelection;
 }
 
@@ -112,6 +109,30 @@ function checkAndAppendChild(text, node) {
     else node.appendChild(text);
 }
 
+function displayPlayerSelection(choice) {
+    if (choice === "rock") {
+        player_image.src = "images/player_rock.png";
+    }
+    else if (choice === "paper") {
+        player_image.src = "images/player_paper.png";
+    }
+    else {
+        player_image.src = "images/player_scissors.png";
+    }
+}
+
+function displayComputerSelection(choice) {
+    if (choice === "rock") {
+        computer_image.src = "images/cpu_rock.png";
+    }
+    else if (choice === "paper") {
+        computer_image.src = "images/cpu_paper.png";
+    }
+    else {
+        computer_image.src = "images/cpu_scissors.png";
+    }
+}
+
 let computerSelection;
 let playerSelection;
 let playerScore = 0;
@@ -130,17 +151,16 @@ buttons.forEach((input) =>
 input.addEventListener("click", function buttonClick() {
         if (input.className === "rock") {
             playerSelection = "rock";
-            player_image.src = "images/player_rock.png";
         }
         else if (input.className === "paper") {
             playerSelection = "paper";
-            player_image.src = "images/player_paper.png";
         }
         else if (input.className === "scissors") {
             playerSelection = "scissors"
             player_image.src = "images/player_scissors.png";
         }
 
+        displayPlayerSelection(playerSelection);
         let computerSelection = getComputerSelection();
         playRound(playerSelection, computerSelection);
     }));
