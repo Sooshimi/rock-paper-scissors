@@ -57,6 +57,7 @@ function updateScoreAndDisplay(winner = "") {
             checkAndAppendChild(text, roundResultDiv);
             checkAndAppendChild(score, playerScoreDiv);
             showSelection();
+            score_images.src = player_image.src
             if (playerScore === 5) {
                 const text = document.createTextNode("You won!");
                 finalResultDiv.appendChild(text);
@@ -110,6 +111,7 @@ function checkAndAppendChild(text, node) {
 }
 
 function displayPlayerSelection(choice) {
+    let playerImageHolder;
     if (choice === "rock") {
         player_image.src = "images/player_rock.png";
     }
@@ -119,6 +121,7 @@ function displayPlayerSelection(choice) {
     else {
         player_image.src = "images/player_scissors.png";
     }
+    playerImageHolder = player_image.src
 }
 
 function displayComputerSelection(choice) {
@@ -146,6 +149,7 @@ const playerScoreDiv = document.querySelector("div.playerScore");
 const computerScoreDiv = document.querySelector("div.computerScore");
 const player_image = document.querySelector(".player-image");
 const computer_image = document.querySelector(".computer-image");
+const score_images = document.querySelector(".score-images");
 
 buttons.forEach((input) =>
 input.addEventListener("click", function buttonClick() {
